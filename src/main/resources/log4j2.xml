@@ -4,8 +4,8 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
-        <RollingFile name="RollingFile" fileName="logs/tn/Turnos.log"
-                     filePattern="logs/tn/${date:yyyy-MM}/Turnos-%d{MMddyyyy}-%i.log.gz">
+        <RollingFile name="RollingFile" fileName="logs/jflow-core.log"
+                     filePattern="logs/jflow/${date:yyyy-MM}/jflow-%d{MMddyyyy}-%i.log.gz">
             <PatternLayout >
                 <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
             </PatternLayout>
