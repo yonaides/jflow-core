@@ -29,6 +29,7 @@ class WSClient {
     private Boolean conectado = false;
     private boolean started = false;
     private boolean reconnect = false;
+    private Integer reconnectTime = null;
     private MessageListener messageListener;
 
     public WSClient(String serverUrl) {
@@ -88,6 +89,15 @@ class WSClient {
 
     }
 
+    public Integer getReconnectTime() {
+        return reconnectTime;
+    }
+
+    public WSClient setReconnectTime(Integer reconnectTime) {
+        this.reconnectTime = reconnectTime;
+        return this;
+    }
+
     public void close() {
         try {
             reconnect = false;
@@ -119,11 +129,11 @@ class WSClient {
             return;
         }
 
+        final int rt = 10000 * (reconnectTime == null ? 1 : reconnectTime);
         started = true;
         connetionThreat = new Thread(() -> {
             while (true) {
                 try {
-
                     synchronized (conectado) {
                         if (!conectado) {
                             LOG.info("Connecting...");
@@ -132,7 +142,7 @@ class WSClient {
                         }
                     }
 
-                    Thread.sleep(1000);
+                    Thread.sleep(rt);
                 } catch (InterruptedException | URISyntaxException ex) {
 
                 }

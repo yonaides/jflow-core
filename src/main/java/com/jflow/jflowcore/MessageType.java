@@ -17,6 +17,7 @@ public class MessageType {
     public static final String CALL = "CALL";
     public static final String REMOVE = "REMOVE";
     public static final String PRINT = "PRINT";
+    public static final String DOWNLOAD = "DOWNLOAD";
     public static final String SUCCESS_LOGIN = "SUCCESS_LOGIN";
     public static final String REFRESH = "REFRESH";
     public static final String EXCEPTION = "EXCEPTION";
