@@ -108,7 +108,8 @@ public class JflowCoreWS implements Runnable {
     }
 
     public void close() {
-        RestStatusCheker.getRestatusCheker()
+        RestStatusCheker
+                .getRestatusCheker()
                 .stop();
         wsc.close();
         runProcessQueue = false;
@@ -125,6 +126,9 @@ public class JflowCoreWS implements Runnable {
 
         String uuid = UUID.randomUUID().toString();
 
+        System.out.println("wsUrl " + wsUrl.toString());
+        
+        
         wsc = new WSClient(wsUrl.toString());
         wsc.setMessageListener(message -> {
 
